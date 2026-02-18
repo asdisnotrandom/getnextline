@@ -6,7 +6,7 @@
 /*   By: ademirel <ademirel@student.42istanbul.com.tr>+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 22:47:52 by ademirel          #+#    #+#             */
-/*   Updated: 2026/02/19 01:35:28 by ademirel         ###   ########.fr       */
+/*   Updated: 2026/02/19 02:19:46 by ademirel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	*ft_clear(char *a, char **c)
 	free(a);
 	free(*c);
 	*c = NULL;
-	return(NULL);
+	return (NULL);
 }
 
 static char	*ft_nbal(char *s, int c)
@@ -26,21 +26,21 @@ static char	*ft_nbal(char *s, int c)
 	char	*b;
 
 	if (s == NULL)
-		return(NULL);
+		return (NULL);
 	if (c == 0)
 	{
 		free(s);
-		return(NULL);
+		return (NULL);
 	}
 	b = ft_strchr(s, '\n');
 	if (b == NULL || *(b + 1) == '\0')
 	{
 		free(s);
-		return(NULL);
+		return (NULL);
 	}
 	a = ft_strdup(b + 1);
 	free(s);
-	return(a);
+	return (a);
 }
 
 static char	*ft_lft(char *a)
@@ -50,7 +50,7 @@ static char	*ft_lft(char *a)
 	size_t	j;
 
 	if (a == NULL || *a == '\0')
-		return(NULL);
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (a[i] != '\n' && a[i] != '\0')
@@ -68,7 +68,7 @@ static char	*ft_lft(char *a)
 		j++;
 	}
 	b[j] = '\0';
-	return(b);
+	return (b);
 }
 
 char	*get_next_line(int fd)
@@ -79,21 +79,21 @@ char	*get_next_line(int fd)
 	int			c;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-    	return (NULL);
+		return (NULL);
 	inc = malloc(BUFFER_SIZE + 1);
 	if (inc == NULL)
-		return(NULL);
+		return (NULL);
 	c = 1;
 	while (ft_strchr(blp, '\n') == NULL && c != 0)
 	{
 		c = read(fd, inc, BUFFER_SIZE);
 		if (c == -1)
-			return(ft_clear(inc, &blp));
+			return (ft_clear(inc, &blp));
 		inc[c] = '\0';
 		blp = ft_strjoin(blp, inc);
 	}
 	free(inc);
 	res = ft_lft(blp);
 	blp = ft_nbal(blp, c);
-	return(res);
+	return (res);
 }

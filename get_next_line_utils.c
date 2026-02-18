@@ -6,7 +6,7 @@
 /*   By: ademirel <ademirel@student.42istanbul.com.tr>+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 22:47:55 by ademirel          #+#    #+#             */
-/*   Updated: 2026/02/19 01:37:13 by ademirel         ###   ########.fr       */
+/*   Updated: 2026/02/19 02:17:37 by ademirel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	free((char *)s1);
 	return (d);
 }
+
 char	*ft_strchr(const char *s, int c)
 {
 	if (s == NULL)
