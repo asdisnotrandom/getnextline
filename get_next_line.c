@@ -6,7 +6,7 @@
 /*   By: ademirel <ademirel@student.42istanbul.com.tr>+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 22:47:52 by ademirel          #+#    #+#             */
-/*   Updated: 2026/02/19 06:18:22 by ademirel         ###   ########.fr       */
+/*   Updated: 2026/02/19 06:22:33 by ademirel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	*ft_nbal(char *s)
 		free(s);
 		return (NULL);
 	}
-	new = ft_strdup(new + 1);
+	new = ft_strdup(nptr + 1);
 	free(s);
 	return (new);
 }
