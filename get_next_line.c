@@ -6,7 +6,7 @@
 /*   By: ademirel <ademirel@student.42istanbul.com.tr>+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 22:47:52 by ademirel          #+#    #+#             */
-/*   Updated: 2026/02/19 02:19:46 by ademirel         ###   ########.fr       */
+/*   Updated: 2026/02/19 03:50:48 by ademirel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	inc = malloc(BUFFER_SIZE + 1);
 	if (inc == NULL)
-		return (NULL);
+		return (ft_clear(NULL, &blp));
 	c = 1;
 	while (ft_strchr(blp, '\n') == NULL && c != 0)
 	{
@@ -90,10 +90,16 @@ char	*get_next_line(int fd)
 		if (c == -1)
 			return (ft_clear(inc, &blp));
 		inc[c] = '\0';
+		if (c == 0)
+			break ;
 		blp = ft_strjoin(blp, inc);
+		if (blp == NULL)
+			return (ft_clear(inc, &blp));
 	}
 	free(inc);
 	res = ft_lft(blp);
+	if (res == NULL)
+		return (ft_clear(NULL, &blp));
 	blp = ft_nbal(blp, c);
 	return (res);
 }
