@@ -6,78 +6,78 @@
 /*   By: ademirel <ademirel@student.42istanbul.com.tr>+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 22:47:52 by ademirel          #+#    #+#             */
-/*   Updated: 2026/02/19 04:11:36 by ademirel         ###   ########.fr       */
+/*   Updated: 2026/02/19 06:18:22 by ademirel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*ft_clear(char *a, char **c)
+static char	*ft_clear(char *trs, char **blp)
 {
-	free(a);
-	free(*c);
-	*c = NULL;
+	free(trs);
+	free(*blp);
+	*blp = NULL;
 	return (NULL);
 }
 
 static char	*ft_nbal(char *s)
 {
-	char	*a;
-	char	*b;
+	char	*new;
+	char	*nptr;
 
 	if (s == NULL)
 		return (NULL);
-	b = ft_strchr(s, '\n');
-	if (b == NULL || *(b + 1) == '\0')
+	nptr = ft_strchr(s, '\n');
+	if (nptr == NULL || *(nptr + 1) == '\0')
 	{
 		free(s);
 		return (NULL);
 	}
-	a = ft_strdup(b + 1);
+	new = ft_strdup(new + 1);
 	free(s);
-	return (a);
+	return (new);
 }
 
-static char	*ft_lft(char *a)
+static char	*ft_lft(char *ms)
 {
-	char	*b;
+	char	*nws;
 	size_t	i;
 	size_t	j;
 
-	if (a == NULL || *a == '\0')
+	if (ms == NULL || *ms == '\0')
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (a[i] != '\n' && a[i] != '\0')
+	while (ms[i] != '\n' && ms[i] != '\0')
 	{
 		i++;
 	}
-	if (a[i] == '\n')
+	if (ms[i] == '\n')
 		i++;
-	b = malloc(i + 1);
-	if (b == NULL)
+	nws = malloc(i + 1);
+	if (nws == NULL)
 		return (NULL);
 	while (j < i)
 	{
-		b[j] = a[j];
+		nws[j] = ms[j];
 		j++;
 	}
-	b[j] = '\0';
-	return (b);
+	nws[j] = '\0';
+	return (nws);
 }
 
 static char	*ft_read(int fd, char **blp, char *inc)
 {
-	int	c;
+	int	rv;
 
-	c = 1;
-	while (ft_strchr(*blp, '\n') == NULL && c != 0)
+	rv = 1;
+	while (ft_strchr(*blp, '\n') == NULL && rv != 0)
 	{
-		c = read(fd, inc, BUFFER_SIZE);
-		if (c == -1)
+		rv = read(fd, inc, BUFFER_SIZE);
+		if (rv == -1)
 			return (ft_clear(inc, blp));
-		inc[c] = '\0';
-		if (c == 0)
+		inc[rv] = '\0';
+		if (rv == 0)
 			break ;
 		*blp = ft_strjoin(*blp, inc);
 		if (*blp == NULL)

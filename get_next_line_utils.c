@@ -6,7 +6,7 @@
 /*   By: ademirel <ademirel@student.42istanbul.com.tr>+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 22:47:55 by ademirel          #+#    #+#             */
-/*   Updated: 2026/02/19 03:37:13 by ademirel         ###   ########.fr       */
+/*   Updated: 2026/02/19 06:20:14 by ademirel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,29 @@ size_t	ft_strlen(const char *s)
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	i;
-	char	*d;
+	char	*sng;
 
 	if (s1 == NULL)
 		return (ft_strdup(s2));
-	d = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (d != NULL)
+	sng = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (sng != NULL)
 	{
 		i = 0;
 		while (s1[i] != '\0')
 		{
-			d[i] = s1[i];
+			sng[i] = s1[i];
 			i++;
 		}
 		while (*s2 != '\0')
 		{
-			d[i] = *s2;
+			sng[i] = *s2;
 			i++;
 			s2++;
 		}
-		d[i] = '\0';
+		sng[i] = '\0';
 	}
 	free((char *)s1);
-	return (d);
+	return (sng);
 }
 
 char	*ft_strchr(const char *s, int c)
@@ -70,20 +70,20 @@ char	*ft_strchr(const char *s, int c)
 char	*ft_strdup(const char *s)
 {
 	size_t	sz;
-	char	*a;
+	char	*all;
 	size_t	i;
 
 	sz = ft_strlen(s) + 1;
-	a = malloc(sz);
+	all = malloc(sz);
 	i = 0;
-	if (a == 0)
+	if (all == 0)
 		return (0);
 	while (s[i] != '\0')
 	{
-		a[i] = s[i];
+		all[i] = s[i];
 		i++;
 	}
 	if (s[i] == '\0')
-		a[i] = s[i];
-	return (a);
+		all[i] = s[i];
+	return (all);
 }
